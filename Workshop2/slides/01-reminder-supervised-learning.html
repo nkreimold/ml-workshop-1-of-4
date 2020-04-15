@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Introduction to Supervised Learning</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Garamond);
+      @import url(https://fonts.googleapis.com/css?family=Muli:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+![:scale 40%](images/sklearn_logo.png)
+
+
+### Intermediate Machine learning with scikit-learn
+
+# Reminder: Scikit-learn API
+
+Andreas C. Müller
+
+Columbia University, scikit-learn
+
+.smaller[https://github.com/amueller/ml-workshop-2-of-4]
+
+
+---
+
+class: center
+
+# scikit-learn documentation
+![:scale 60%](images/sklearn-docs.png)
+
+<a href="http://scikit-learn.org/" style="color:black; font-size:50px; text-decoration:None" >scikit-learn.org</a>
+
+---
+
+# Other Resources
+
+.center[
+![:scale 25%](images/PDSH.png)&nbsp;&nbsp;&nbsp;
+![:scale 25%](images/imlp.png)&nbsp;&nbsp;&nbsp;
+![:scale 25%](images/esl.png)
+]
+Lecture: http://www.cs.columbia.edu/~amueller/comsw4995s19/schedule/
+
+https://www.youtube.com/andreasmueller
+
+Videos and more slides!
+
+---
+class: center
+
+# Representing Data
+
+![:scale 100%](images/matrix-representation.png)
+---
+class: center
+
+# Training and Test Data
+
+![:scale 80%](images/train-test-split.png)
+
+---
+class: center
+
+# Supervised ML Workflow
+
+![:scale 100%](images/supervised-ml-api.png)
+
+---
+# KNN with scikit-learn
+
+```python
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y)
+
+from sklearn.neighbors import KNeighborsClassifier
+knn = KNeighborsClassifier(n_neighbors=1)
+knn.fit(X_train, y_train)
+print("accuracy: {:.2f}".format(knn.score(X_test, y_test)))
+y_pred = knn.predict(X_test)
+```
+accuracy: 0.77
+
+???
+
+---
+class: center, middle
+
+# Sckit-Learn API Summary
+
+![:scale 80%](images/api-table.png)
+
+---
+class: center, middle
+
+
+# Notebook: Review of Supervised learning
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    <script>
+    // Config Remark
+    remark.macros['scale'] = function (percentage) {
+        var url = this;
+        return '<img src="' + url + '" style="width: ' + percentage + '" />';
+    };
+    config_remark = {
+        highlightStyle: 'github',
+        highlightSpans: true,
+        highlightLines: true,
+        ratio: "16:9"
+    };
+      var slideshow = remark.create(config_remark);
+
+    // Configure MathJax
+    MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'] /* removed 'code' entry*/
+    }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i = 0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+    </script>
+  </body>
+</html>
